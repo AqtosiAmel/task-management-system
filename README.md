@@ -100,7 +100,8 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 
 ## License
 
-Specify your project's license here (e.g., MIT License).
+This project is open for use and modification. Please give credit if you use any part of the code.
+
 
 ---
 
@@ -110,5 +111,5 @@ Specify your project's license here (e.g., MIT License).
 
 ---
 
-If you want, I can help customize it more with your actual project name, description, or tech stack. Just let me know!
+*Thank you for checking out this project! If you have any questions, feel free to reach out.*
 ```
