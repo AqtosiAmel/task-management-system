@@ -1,13 +1,10 @@
-Absolutely! Here’s a clean, professional `README.md` template tailored for your project using GitHub and InfinityFree hosting, including the deployment details you shared.
 
 ---
 
 ````markdown
 # Project Name
 
-## Description
-A brief description of your project here. Explain what the web app does, its main features, and the technologies used.
-
+## This project is all about Task Management System where its main features are CRUD, It also needed an account if u want to use it
 ---
 
 ## Table of Contents
