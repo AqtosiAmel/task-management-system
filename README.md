@@ -1,112 +1,135 @@
+Here’s a professional `README.md` for your **Terminal Assessment Task (Task Management System)** built with **CodeIgniter 4**:
 
 ---
 
-````markdown
-# Project Name
+```markdown
+# 📝 Terminal Assessment Task – Task Management System
 
-## This project is all about Task Management System where its main features are CRUD, It also needed an account if u want to use it
----
-
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Deployment](#deployment)
-- [Project Links](#project-links)
-- [Challenges & Resolutions](#challenges--resolutions)
-- [Contributing](#contributing)
-- [License](#license)
+This is a **Task Management System** built using **CodeIgniter 4**, **Bootstrap**, and **MySQL**. It supports user registration, login, task CRUD, file attachments, and an admin panel for managing all users' tasks.
 
 ---
 
-## Installation
+## 🚀 Features
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/your-repo.git
+### 👤 User Features
+- Register and log in securely
+- Create, view, edit, and delete personal tasks
+- Attach files to tasks (with size limit)
+- Responsive UI built with Bootstrap
+
+### 🔐 Admin Features
+- Admin dashboard with all user data
+- View all users' tasks
+- Edit and delete any task
+- View task attachments
+- Role-based access control
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer        | Technology         |
+|-------------|--------------------|
+| Backend      | CodeIgniter 4 (PHP) |
+| Frontend     | Bootstrap 5         |
+| Database     | MySQL (via XAMPP)   |
+| Hosting      | InfinityFree (optional) |
+| Auth System  | CodeIgniter Sessions |
+| File Uploads | File storage in `/public/uploads/` |
+
+---
+
+## 📁 Project Structure
+
+```
+
+/app
+├── Controllers
+│   ├── AuthController.php
+│   └── TaskController.php
+├── Models
+│   ├── UserModel.php
+│   └── TaskModel.php
+├── Views
+│   ├── tasks/
+│   ├── auth/
+│   └── admin/
+
 ````
 
-2. Navigate to the project directory:
+---
 
-   ```bash
-   cd your-repo
-   ```
+## 🔧 Setup Instructions
 
-3. Install dependencies (if any):
+### 1. Clone the repo
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+````
 
-   ```bash
-   npm install
-   ```
+### 2. Install dependencies & start XAMPP
 
-   *(Adjust according to your stack)*
+* Place the project in `htdocs`
+* Start Apache and MySQL from XAMPP
 
-4. Run the project locally:
+### 3. Import the database
 
-   ```bash
-   npm start
-   ```
+* Go to `http://localhost/phpmyadmin`
+* Import the provided SQL file (e.g., `database.sql`)
 
-   *(Or your project's start command)*
+### 4. Configure environment
+
+Copy `.env.example` to `.env` and update:
+
+```
+database.default.hostname = localhost
+database.default.database = your_database
+database.default.username = root
+database.default.password = 
+```
+
+### 5. Run the app
+
+Visit:
+
+```
+http://localhost/your-project-folder/public
+```
 
 ---
 
-## Usage
+## 🖼️ Screenshots
 
-Open your browser and go to [http://localhost:3000](http://localhost:3000) (or your local port) to see the project running locally.
-
----
-
-## Deployment
-
-This project is deployed using **InfinityFree** free hosting service with the source code maintained on **GitHub**.
-
-### Deployment Steps:
-
-1. Developed and tested the app locally.
-2. Pushed the final code to GitHub repository.
-3. Created a free hosting account on InfinityFree.
-4. Uploaded project files to the `public_html` folder via InfinityFree’s file manager or FTP.
-5. Configured DNS and domain settings (if using a custom domain).
-6. Waited for up to 72 hours for DNS propagation for the site to become accessible.
-
-### Important Note:
-
-Because InfinityFree is a free hosting provider, DNS propagation may take up to 72 hours before the site becomes publicly accessible.
+| Login Page                      | Admin Dashboard                           |
+| ------------------------------- | ----------------------------------------- |
+| ![Login](screenshots/login.png) | ![Admin](screenshots/admin_dashboard.png) |
 
 ---
 
-## Project Links
+## 📌 Notes
 
-* **Live Site:** http://aqtosiamel.wuaze.com/
-* **GitHub Repository:** [https://github.com/AqtosiAmel/task-management-system](https://github.com/AqtosiAmel/task-management-system)
-
----
-
-## Challenges & Resolutions
-
-* **DNS Propagation Delay:** The website was not immediately accessible after deployment. Resolved by waiting for up to 72 hours for DNS propagation to complete.
-* **Limited Environment Variable Support:** Managed configurations directly within the codebase due to hosting restrictions.
-* **Manual File Upload:** Ensured reliable uploads by using FTP clients instead of relying solely on the file manager.
+* Upload limit: Files must be under **2MB**
+* Admin users are identified by `role = 'admin'` in the `users` table
+* Make sure the `/public/uploads/` folder is writable
 
 ---
 
-## Contributing
+## 🙋 Author
 
-Contributions are welcome! Please open an issue or submit a pull request for any improvements.
-
----
-
-## License
-
-This project is open for use and modification. Please give credit if you use any part of the code.
-
+**Name:** Guro, Amel B.
+**Course:** BSIT
+**Assessment:** Terminal Assessment Task
+**School Year:** 2024-2025
 
 ---
 
-*Thank you for checking out this project!*
+## 📃 License
+
+This project is for academic purposes only.
 
 ```
 
 ---
 
-*Thank you for checking out this project! If you have any questions, feel free to reach out.*
+
 ```
