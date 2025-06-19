@@ -1,60 +1,85 @@
-# CodeIgniter 4 Framework
+# Task Management Web Application
 
-## What is CodeIgniter?
+A web-based task management system built with PHP and CodeIgniter 4.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Project Overview
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+This application allows users to register, log in, and manage their tasks efficiently. It supports user authentication, role-based access (admin/user), CRUD operations for tasks, file uploads, and a RESTful API for task management. Admin registration is protected by a registration code.
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Features
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+- User Registration and Login
+- Role-Based Access Control (RBAC)
+- Admin Registration Code (only authorized users can register as admin)
+- CRUD Module for Tasks
+- File Upload and Media Handling
+- RESTful API for Tasks
+- Dashboard for users and admin
 
-## Important Change with index.php
+## Technologies Used
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+- PHP with CodeIgniter 4 Framework
+- MySQL Database
+- Bootstrap (UI)
+- Git and GitHub for version control
+- Deployed on a live web server (e.g., 000webhost, InfinityFree, or XAMPP for local)
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+## Setup Instructions
 
-**Please** read the user guide for a better explanation of how CI4 works!
+1. **Clone the repository:**
+   ```
+   git clone <your-repo-url>
+   ```
+2. **Import the database:**
+   - Create a MySQL database (e.g., `ta1_db`).
+   - Import the provided SQL file (if available) or create tables as needed.
+3. **Configure the environment:**
+   - Update `app/Config/Database.php` with your database credentials.
+   - Update `app/Config/App.php` with your base URL (e.g., `http://localhost/TA1/public/`).
+4. **Set writable permissions:**
+   - Ensure `public/uploads/` is writable for file uploads.
+5. **Run the app:**
+   - Start Apache and MySQL (if using XAMPP).
+   - Visit `http://localhost/TA1/public/` in your browser.
 
-## Repository Management
+## Registration Code for Admin
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+- To register as an **admin**, you must enter the registration code: `MYSECRET2024`.
+- Regular users can register without a code.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## API Endpoints
 
-## Contributing
+- **List all tasks:**
+  - `GET /api/tasks`
+- **List tasks for a user:**
+  - `GET /api/tasks?user_id={id}`
+- **Create a task:**
+  - `POST /tasks` (requires authentication)
+- **Update a task:**
+  - `POST /tasks/update/{id}` (requires authentication)
+- **Delete a task:**
+  - `GET /tasks/delete/{id}` (requires authentication)
 
-We welcome contributions from the community.
+## Testing with Postman
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+- **Register User:**
+  - `POST /register` with fields: `username`, `email`, `password`, `role` (`user` or `admin`), and `reg_code` (only for admin)
+- **Create Task:**
+  - `POST /tasks` with fields: `title`, `description`, `status`, `priority`, `due_date`, and optional `attachment`
+- **CSRF:**
+  - If CSRF protection is enabled, include the CSRF token in your requests.
 
-## Server Requirements
+## Default Login Credentials
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+- **Admin:** admin124@gmail.com / admin124
+- **User:** user124@gmail.com / user124
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+## Deployment
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+- Upload all files to your hosting server.
+- Set up the database and update configuration files as above.
+- Ensure file permissions for uploads.
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+## License
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+This project is licensed under the MIT License.

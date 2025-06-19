@@ -12,20 +12,24 @@ class AuthController extends Controller
     }
 
     public function login()
-    {
-        $session = session();
-        $model = new UserModel();
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
-        $user = $model->where('email', $email)->first();
+{
+    $session = session();
+    $model = new UserModel();
+    $email = $this->request->getPost('email');
+    $password = $this->request->getPost('password');
+    $user = $model->where('email', $email)->first();
 
-        if ($user && password_verify($password, $user['password'])) {
-            $session->set('user_id', $user['id']);
-            return redirect()->to('/tasks');
-        } else {
-            return redirect()->back()->with('error', 'Invalid credentials.');
-        }
+    if ($user && password_verify($password, $user['password'])) {
+        $session->set([
+            'user_id' => $user['id'],
+            'role'    => $user['role'], // ✅ store role in session
+        ]);
+        return redirect()->to('/tasks');
+    } else {
+        return redirect()->back()->with('error', 'Invalid credentials.');
     }
+}
+
 
     public function showRegister()
     {
@@ -33,22 +37,38 @@ class AuthController extends Controller
     }
 
     public function register()
-    {
-        $session = session();
-        $model = new UserModel();
-        $data = [
-            'username'   => $this->request->getPost('username'),
-            'email'      => $this->request->getPost('email'),
-            'password'   => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-            'created_at' => date('Y-m-d H:i:s')
-        ];
-        
-        $model->insert($data);
-        $user = $model->where('email', $data['email'])->first();
-        $session->set('user_id', $user['id']);
+{
+    $session = session();
+    $model = new UserModel();
 
-        return redirect()->to('/tasks');
+    $role = $this->request->getPost('role');
+    $regCode = $this->request->getPost('reg_code');
+    $validCode = 'MYSECRET2024';
+    if ($role === 'admin' && $regCode !== $validCode) {
+        return redirect()->back()->withInput()->with('error', 'Invalid registration code.');
     }
+
+    // Get form data
+    $data = [
+        'username'   => $this->request->getPost('username'),
+        'email'      => $this->request->getPost('email'),
+        'password'   => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+        'role'       => $role,
+        'created_at' => date('Y-m-d H:i:s')
+    ];
+
+    $model->insert($data);
+
+    // Get inserted user and set session
+    $user = $model->where('email', $data['email'])->first();
+    $session->set([
+        'user_id' => $user['id'],
+        'role'    => $user['role'],
+    ]);
+
+    return redirect()->to('/tasks');
+}
+
 
     public function logout()
     {

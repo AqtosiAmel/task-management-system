@@ -1,0 +1,16 @@
+CRITICAL - 2025-06-14 01:48:29 --> ErrorException: Cannot redeclare App\Controllers\TaskController::edit()
+[Method: GET, Route: tasks]
+in APPPATH\Controllers\TaskController.php on line 244.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-14 01:50:10 --> ErrorException: Cannot redeclare App\Controllers\TaskController::edit()
+[Method: GET, Route: tasks]
+in APPPATH\Controllers\TaskController.php on line 244.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-14 01:50:10 --> ErrorException: Cannot redeclare App\Controllers\TaskController::edit()
+[Method: GET, Route: tasks]
+in APPPATH\Controllers\TaskController.php on line 244.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-14 01:50:32 --> ErrorException: Cannot redeclare App\Controllers\TaskController::edit()
+[Method: GET, Route: tasks]
+in APPPATH\Controllers\TaskController.php on line 244.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
