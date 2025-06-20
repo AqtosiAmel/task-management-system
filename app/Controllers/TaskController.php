@@ -171,72 +171,72 @@ class TaskController extends Controller
     }
 
     public function adminUserTasks($userId)
-    {
-        $this->checkAuth();
+{
+    $this->checkAuth();
 
-        if (session()->get('role') !== 'admin') {
-            return redirect()->to('/tasks')->with('error', 'Unauthorized access.');
-        }
+    if (session()->get('role') !== 'admin') {
+        return redirect()->to('/tasks')->with('error', 'Unauthorized access.');
+    }
 
-        $taskModel = new TaskModel();
-        $userTasks = $taskModel->where('user_id', $userId)->findAll();
+    $taskModel = new TaskModel();
+    $userTasks = $taskModel->where('user_id', $userId)->findAll();
 
-        return view('admin/user_tasks', [
-            'tasks' => $userTasks,
-            'user_id' => $userId
-        ]);
+    return view('admin/user_tasks', [
+        'tasks' => $userTasks,
+        'user_id' => $userId
+    ]);
     }
 
     public function adminDashboard()
-    {
-        $this->checkAuth();
+{
+    $this->checkAuth();
 
-        if (session()->get('role') !== 'admin') {
-            return redirect()->to('/tasks');
-        }
-
-        $userModel = new \App\Models\UserModel();
-        $users = $userModel->findAll();
-
-        return view('admin/dashboard', ['users' => $users]);
+    if (session()->get('role') !== 'admin') {
+        return redirect()->to('/tasks');
     }
+
+    $userModel = new \App\Models\UserModel();
+    $users = $userModel->findAll();
+
+    return view('admin/dashboard', ['users' => $users]);
+}
 
     public function adminViewTask($id)
-    {
-        $this->checkAuth();
+{
+    $this->checkAuth();
 
-        if (session()->get('role') !== 'admin') {
-            return redirect()->to('/tasks')->with('error', 'Unauthorized access.');
-        }
-
-        $model = new \App\Models\TaskModel();
-        $task = $model->find($id);
-
-        if (!$task) {
-            return redirect()->to('/admin/dashboard')->with('error', 'Task not found.');
-        }
-
-        return view('admin/view_task_admin', ['task' => $task]);
+    if (session()->get('role') !== 'admin') {
+        return redirect()->to('/tasks')->with('error', 'Unauthorized access.');
     }
+
+    $model = new \App\Models\TaskModel();
+    $task = $model->find($id);
+
+    if (!$task) {
+        return redirect()->to('/admin/dashboard')->with('error', 'Task not found.');
+    }
+
+    return view('admin/view_task_admin', ['task' => $task]);
+}
 
     public function adminDelete($id)
-    {
-        $this->checkAuth();
+{
+    $this->checkAuth();
 
-        if (session()->get('role') !== 'admin') {
-            return redirect()->to('/tasks')->with('error', 'Unauthorized access.');
-        }
-
-        $model = new \App\Models\TaskModel();
-        $task = $model->find($id);
-
-        if (!$task) {
-            return redirect()->to('/admin/dashboard')->with('error', 'Task not found.');
-        }
-
-        $model->delete($id);
-        return redirect()->to('/admin/dashboard')->with('success', 'Task deleted successfully.');
+    if (session()->get('role') !== 'admin') {
+        return redirect()->to('/tasks')->with('error', 'Unauthorized access.');
     }
+
+    $model = new \App\Models\TaskModel();
+    $task = $model->find($id);
+
+    if (!$task) {
+        return redirect()->to('/admin/dashboard')->with('error', 'Task not found.');
+    }
+
+    $model->delete($id);
+    return redirect()->to('/admin/dashboard')->with('success', 'Task deleted successfully.');
+}
 
     public function adminEditTask($id)
     {
